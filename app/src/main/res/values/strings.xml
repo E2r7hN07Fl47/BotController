@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">BotController</string>
+    <string name="app_name" translatable="false">BotController</string>
+    <string name="action_reset">Reset server</string>
+    <string name="action_exit">Exit</string>
+    <string name="text_login">Login:</string>
+    <string name="text_password">Password:</string>
+    <string name="text_server">Server:</string>
+    <string name="text_port">Port:</string>
+    <string name="button_save">Save</string>
+    <string name="toast_no_login">Login can not be empty!</string>
+    <string name="toast_no_password">Password can not be empty!</string>
+    <string name="toast_no_server">Server can not be empty!</string>
+    <string name="toast_no_port">Port can not be empty!</string>
 </resources>

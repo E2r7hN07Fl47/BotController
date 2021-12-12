@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ru.e2r7hn07fl47.botcontroller.MainActivity">
+
+    <item
+        android:id="@+id/resetActionMain"
+        android:title="@string/action_reset"
+        android:orderInCategory="1"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/exitActionMain"
+        android:title="@string/action_exit"
+        android:orderInCategory="2"
+        app:showAsAction="never" />
+
+</menu>
