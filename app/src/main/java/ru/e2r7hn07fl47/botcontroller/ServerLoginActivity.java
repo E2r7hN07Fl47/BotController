@@ -19,7 +19,7 @@ public class ServerLoginActivity extends AppCompatActivity {
         Button saveButton = (Button) findViewById(R.id.saveButton);
         EditText loginEdit = (EditText) findViewById(R.id.loginEditText);
         EditText passwordEdit = (EditText) findViewById(R.id.passwordEditText);
-        EditText serverEdit = (EditText) findViewById(R.id.serverEditText);
+        EditText addressEdit = (EditText) findViewById(R.id.addressEditText);
         EditText portEdit = (EditText) findViewById(R.id.portEditText);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -36,15 +36,15 @@ public class ServerLoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), R.string.toast_no_password, Toast.LENGTH_LONG).show();
                     return;
                 }
-                String server = serverEdit.getText().toString();
-                if (server.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), R.string.toast_no_login, Toast.LENGTH_LONG).show();
+                String address = addressEdit.getText().toString();
+                if (address.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), R.string.toast_no_address, Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 String portString = portEdit.getText().toString();
                 if (portString.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), R.string.toast_no_password, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.toast_no_port, Toast.LENGTH_LONG).show();
                     return;
                 }
                 int port = Integer.parseInt(portString);
@@ -52,7 +52,7 @@ public class ServerLoginActivity extends AppCompatActivity {
                 Editor e = MainActivity.sPref.edit();
                 e.putString("login", login);
                 e.putString("password", password);
-                e.putString("server", server);
+                e.putString("address", address);
                 e.putInt("port", port);
                 e.putBoolean("hasData", true);
                 e.apply();

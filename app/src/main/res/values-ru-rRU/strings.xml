@@ -4,11 +4,11 @@
     <string name="action_exit">Выход</string>
     <string name="text_login">Логин:</string>
     <string name="text_password">Пароль:</string>
-    <string name="text_server">Сервер:</string>
+    <string name="text_address">Адрес:</string>
     <string name="text_port">Порт:</string>
     <string name="button_save">Сохранить</string>
     <string name="toast_no_login">Логин не может быть пустым!</string>
     <string name="toast_no_password">Пароль не может быть пустым!</string>
-    <string name="toast_no_server">Сервер не может быть пустым!</string>
+    <string name="toast_no_address">Адрес не может быть пустым!</string>
     <string name="toast_no_port">Порт не может быть пустым!</string>
 </resources>

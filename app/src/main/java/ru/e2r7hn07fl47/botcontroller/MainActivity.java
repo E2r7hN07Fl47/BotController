@@ -2,7 +2,6 @@ package ru.e2r7hn07fl47.botcontroller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +10,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,16 +28,27 @@ public class MainActivity extends AppCompatActivity {
         if (!hasData) {
             startActivity(new Intent(MainActivity.this, ServerLoginActivity.class));
         } else {
-            String login = sPref.getString("login", "");
-            String password = sPref.getString("password", "");
-            String server = sPref.getString("server", "");
-            int port = sPref.getInt("port", 0);
-            Log.d("TEST", login);
-            Log.d("TEST", password);
-            Log.d("TEST", server);
-            Log.d("TEST", String.valueOf(port));
-        }
+            System.setProperty("user.home", getApplicationContext().getApplicationInfo().dataDir);
 
+            SshUtils ssh = new SshUtils();
+            Log.d("SSH", "Start");
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    ArrayList<Integer> botList = ssh.getBotList();
+                    Collections.sort(botList);
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (int item: botList) {
+                                Log.d("INT_SORT2", item + "");
+                            }
+                        }
+                    });
+                }
+            }).start();
+        }
     }
 
 
