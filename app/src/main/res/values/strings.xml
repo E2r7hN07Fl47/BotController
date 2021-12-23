@@ -11,4 +11,12 @@
     <string name="toast_no_password">Password can not be empty!</string>
     <string name="toast_no_address">Address can not be empty!</string>
     <string name="toast_no_port">Port can not be empty!</string>
+    <string name="text_status_on">Working</string>
+    <string name="text_status_off">Disabled</string>
+    <string name="button_enable">Enable</string>
+    <string name="button_disable">Disable</string>
+    <string name="text_status">"Status: "</string>
+    <string name="button_enable_all">Enable all</string>
+    <string name="button_disable_all">Disable all</string>
+    <string name="toast_long_method">It has long duratuon. Please, wait. Do not close app</string>
 </resources>

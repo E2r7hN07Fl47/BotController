@@ -11,4 +11,12 @@
     <string name="toast_no_password">Пароль не может быть пустым!</string>
     <string name="toast_no_address">Адрес не может быть пустым!</string>
     <string name="toast_no_port">Порт не может быть пустым!</string>
+    <string name="text_status_on">Работает</string>
+    <string name="text_status_off">Выключен</string>
+    <string name="button_enable">Включить</string>
+    <string name="button_disable">Выключить</string>
+    <string name="text_status">"Статус: "</string>
+    <string name="button_enable_all">Включить все</string>
+    <string name="button_disable_all">Выключить все</string>
+    <string name="toast_long_method">Данное действие имеет долгое время выполняние. Пожалуйста, ожидайте. Не закрывайте приложение</string>
 </resources>

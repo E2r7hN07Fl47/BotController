@@ -1,7 +1,5 @@
 package ru.e2r7hn07fl47.botcontroller;
 
-import android.util.Log;
-
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
@@ -26,10 +24,53 @@ public class SshUtils {
     }
 
     public ArrayList<Integer> getBotList() {
+        String[] responseArray = getResponce("ls -d */").split("\n");
         ArrayList<Integer> botList = new ArrayList<>();
+        for (String response: responseArray) {
+            if (!response.contains("_")) {
+                botList.add(Integer.valueOf(response.replace("/", "").replace("bot", "")));
+            }
+        }
 
+        return botList;
+    }
+
+    public ArrayList<String> getActiveBotList() {
+        ArrayList<String> botList = new ArrayList<>();
+        String[] responseArray = getResponce("tmux ls").split("\n");
+        if (responseArray[0].contains("error")) {
+            return botList;
+        }
+
+        for (String response: responseArray) {
+            botList.add(response.split(":")[0].replace("python_bot", ""));
+        }
+
+        return botList;
+    }
+
+    public void enableBot(String botNubmer) {
+        String command = "bot" + botNubmer + "/start.sh";
+        getResponce(command);
+    }
+
+    public void disableBot(String botNubmer) {
+        String command = "bot" + botNubmer + "/stop.sh";
+        getResponce(command);
+    }
+
+    public void enableAllBots() {
+        getResponce("./run.sh");
+    }
+
+    public void disableAllBots() {
+        getResponce("./stop.sh");
+    }
+
+    private String getResponce(String command) {
         Session session = null;
         ChannelExec channel = null;
+        String response = "";
 
         try {
             session = new JSch().getSession(login, address, port);
@@ -38,7 +79,7 @@ public class SshUtils {
             session.connect();
 
             channel = (ChannelExec) session.openChannel("exec");
-            channel.setCommand("ls -d */");
+            channel.setCommand(command);
             ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
             channel.setOutputStream(responseStream);
             channel.connect();
@@ -47,12 +88,7 @@ public class SshUtils {
                 Thread.sleep(100);
             }
 
-            String[] responseArray = responseStream.toString().split("\n");
-            for (String response: responseArray) {
-                if (!response.contains("_")) {
-                    botList.add(Integer.valueOf(response.replace("/", "").replace("bot", "")));
-                }
-            }
+            response = responseStream.toString();
         } catch (InterruptedException | JSchException e) {
             e.printStackTrace();
         } finally {
@@ -63,7 +99,7 @@ public class SshUtils {
                 channel.disconnect();
             }
         }
-        return botList;
+        return response;
     }
 
 }

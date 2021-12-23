@@ -16,11 +16,11 @@ public class ServerLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server_login);
 
-        Button saveButton = (Button) findViewById(R.id.saveButton);
-        EditText loginEdit = (EditText) findViewById(R.id.loginEditText);
-        EditText passwordEdit = (EditText) findViewById(R.id.passwordEditText);
-        EditText addressEdit = (EditText) findViewById(R.id.addressEditText);
-        EditText portEdit = (EditText) findViewById(R.id.portEditText);
+        Button saveButton = findViewById(R.id.saveButton);
+        EditText loginEdit = findViewById(R.id.loginEditText);
+        EditText passwordEdit = findViewById(R.id.passwordEditText);
+        EditText addressEdit = findViewById(R.id.addressEditText);
+        EditText portEdit = findViewById(R.id.portEditText);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
