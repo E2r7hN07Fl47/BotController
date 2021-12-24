@@ -55,7 +55,7 @@ public class ServerLoginActivity extends AppCompatActivity {
                 e.putString("address", address);
                 e.putInt("port", port);
                 e.putBoolean("hasData", true);
-                e.apply();
+                e.commit();
 
                 finish();
             }

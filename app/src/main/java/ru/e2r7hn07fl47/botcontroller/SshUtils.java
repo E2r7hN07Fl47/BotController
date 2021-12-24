@@ -26,9 +26,17 @@ public class SshUtils {
     public ArrayList<Integer> getBotList() {
         String[] responseArray = getResponce("ls -d */").split("\n");
         ArrayList<Integer> botList = new ArrayList<>();
+        if (responseArray.length == 0) {
+            return botList;
+        }
+
         for (String response: responseArray) {
             if (!response.contains("_")) {
-                botList.add(Integer.valueOf(response.replace("/", "").replace("bot", "")));
+                try {
+                    botList.add(Integer.valueOf(response.replace("/", "").replace("bot", "")));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -38,7 +46,7 @@ public class SshUtils {
     public ArrayList<String> getActiveBotList() {
         ArrayList<String> botList = new ArrayList<>();
         String[] responseArray = getResponce("tmux ls").split("\n");
-        if (responseArray[0].contains("error")) {
+        if (responseArray[0].contains("error") || responseArray[0].contains("no server")) {
             return botList;
         }
 
@@ -50,12 +58,12 @@ public class SshUtils {
     }
 
     public void enableBot(String botNubmer) {
-        String command = "bot" + botNubmer + "/start.sh";
+        String command = "cd bot" + botNubmer + "/ && ./start.sh && cd ..";
         getResponce(command);
     }
 
     public void disableBot(String botNubmer) {
-        String command = "bot" + botNubmer + "/stop.sh";
+        String command = "cd bot" + botNubmer + "/ && ./stop.sh && cd ..";
         getResponce(command);
     }
 

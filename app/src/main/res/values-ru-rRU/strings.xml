@@ -19,4 +19,8 @@
     <string name="button_enable_all">Включить все</string>
     <string name="button_disable_all">Выключить все</string>
     <string name="toast_long_method">Данное действие имеет долгое время выполняние. Пожалуйста, ожидайте. Не закрывайте приложение</string>
+    <string name="fragment_title">Ошибка сервера</string>
+    <string name="fragment_message">Возникла ошибка при подключении. Хотите перезапустить приложение или сбросить настройки сервера?</string>
+    <string name="fragment_button_restart">Перезапустить</string>
+    <string name="fragment_button_reset">Сброс</string>
 </resources>

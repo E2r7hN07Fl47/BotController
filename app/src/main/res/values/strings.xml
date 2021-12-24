@@ -19,4 +19,8 @@
     <string name="button_enable_all">Enable all</string>
     <string name="button_disable_all">Disable all</string>
     <string name="toast_long_method">It has long duratuon. Please, wait. Do not close app</string>
+    <string name="fragment_title">Server error</string>
+    <string name="fragment_message">There is error while connecting. Do you want to restart app or reset server settings?</string>
+    <string name="fragment_button_restart">Restart app</string>
+    <string name="fragment_button_reset">Reset settings</string>
 </resources>
